@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import FullScreen from "../../FullScreen";
 import { navLinks } from "../../data";
 
 const NavLinks = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3rem;
-  color: white;
+  height: 3.5rem;
   margin: 0 auto;
   z-index: 100;
-  background-color: var(--light-green);
+  background: var(--light-green);
+
 `;
 const NavContainer = styled.div`
+
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100% 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  background: var(--light-green);
 
 `;
 // =============== LOGO Section ========================
@@ -45,19 +49,22 @@ const LinkContainer = styled.div`
 `;
 const UL = styled.ul`
   display: flex;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 14px;
+  width: 100%;
 `;
 
 const List = styled.li``;
 
 const Link = styled.a`
   color: var(--primary-green );
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 400;
 `;
 
 const Nav = () => {
   return (
+    <FullScreen>
     <NavLinks >
       <NavContainer className="container">
         <ImageContainer>
@@ -81,6 +88,7 @@ const Nav = () => {
         </LinkContainer>
       </NavContainer>
     </NavLinks>
+    </FullScreen>
   );
 };
 

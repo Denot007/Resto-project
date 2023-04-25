@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 
 const Section = styled.section`
-
-  height: 382px;
   margin: 0 auto;
   width: var(--lg);
+
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 10rem;
+    background-color: #209696;
+  }
 `;
 
 const FullScreen = ({children , style }) => {

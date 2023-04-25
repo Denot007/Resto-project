@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FullScreen from "../../FullScreen";
+import { bannerData } from "../../data";
 // ********************************************************
 
 const Box = styled.div`
@@ -48,37 +49,62 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+
+    @media (max-width: 768px) {
+      display: none;
+    width: 10rem;
+    height: 10rem;
+  }
 `;
 
 const Image = styled.img`
-  width: 80%;
+  width: 100%;
   height: 80%;
   border-radius: 1rem;
   border: 5px solid var(--light-green);
+
+
+  @media (max-width: 768px) {
+    width: 10rem;
+    height: 10rem;
+  }
+
+
 `;
+
+const fullScreen = {
+  background: "var(--primary-green)",
+  height: "382px",
+
+  '@media (max-width: 700px)': {
+    background: "var(--primary-yelow)"
+  },
+};
+
+// ****************************************************************
+//{ src, alt, companyName, location, description, id }
+//
+// ****************************************************************
 
 const Banner = () => {
   return (
-    <FullScreen style={{ background: "var(--primary-green)" }}>
-      <Box className="container">
-        <TextContainer>
-          <H1>Jeans Creole Café</H1>
-          <H4>Orlando</H4>
-          <P>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Consequuntur perferendis earum unde nihil, consectetur in nobis
-            fugiat quidem voluptas quasi incidunt doloremque enim fuga.
-          </P>
-          <button>Reseerve a Table</button>
-        </TextContainer>
-
-        <ImageContainer>
-          <Image
-            src="https://qph.cf2.quoracdn.net/main-qimg-a3fb9e294f70d55c5f7df124d535e6dc-lq"
-            alt=""
-          />
-        </ImageContainer>
-      </Box>
+    <FullScreen style={fullScreen}>
+      {bannerData.map(
+        ({ src, location, companyName, id, description, alt }) => (
+          <Box key={id} className="container">
+            <TextContainer>
+              <H1>{companyName}</H1>
+              <H4>{location}</H4>
+              <P>{description}</P>
+              <button>Reseerve a Table</button>
+            </TextContainer>
+            <ImageContainer>
+              <Image src={src} alt={alt} />
+            </ImageContainer>
+          </Box>
+        ),
+      )}
     </FullScreen>
   );
 };
